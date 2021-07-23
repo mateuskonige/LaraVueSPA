@@ -15,7 +15,7 @@ class BookController extends Controller
         return array_reverse($books);
     }
 
-    // add books
+    // add book
     public function add(Request $request)
     {
         $book = new Book([

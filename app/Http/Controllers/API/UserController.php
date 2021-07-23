@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Session;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -45,10 +45,10 @@ class UserController extends Controller
     {
         $credentials = [
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => $request->password
         ];
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, true)) {
             $success = true;
             $message = 'User login successfully';
         } else {
